@@ -114,8 +114,11 @@ class Client:
 
     bots = {}
     for bot in bot_list:
-      chat_data = self.get_bot(bot["displayName"])
-      bots[chat_data["defaultBotObject"]["nickname"]] = chat_data
+      try:
+        chat_data = self.get_bot(bot["displayName"])
+        bots[chat_data["defaultBotObject"]["nickname"]] = chat_data
+      except:
+        pass
           
     return bots
   

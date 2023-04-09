@@ -8,11 +8,11 @@ base_path = Path(__file__).parent
 long_description = (base_path / "README.md").read_text()
 
 setuptools.setup(
-  name="poe-api",
-  version="0.2.8",
-  author="ading2210",
+  name="poe-web-client",
+  version="0.0.2",
+  author="libaiabcd",
   license="GPLv3",
-  description="A reverse engineered API wrapper for Quora's Poe",
+  description="A reverse engineered API wrapper for Quora's Poe,fork from https://github.com/ading2210/poe-api",
   long_description=long_description,
   long_description_content_type="text/markdown",
   packages=["poe_graphql"],
@@ -35,5 +35,5 @@ setuptools.setup(
     "requests[socks]",
     "python-socks"
   ],
-  url="https://github.com/ading2210/poe-api"
+  url="https://github.com/libaiabcd/poe-api"
 )
