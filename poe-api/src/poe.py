@@ -185,8 +185,10 @@ class Client:
     self.ws.run_forever(**kwargs)
 
   def connect_ws(self):
+    tmpurl = self.get_websocket_url()
+    logger.info(f"connect_ws {tmpurl} ")
     self.ws = websocket.WebSocketApp(
-      self.get_websocket_url(), 
+      tmpurl,
       header={"User-Agent": user_agent},
       on_message=self.on_message,
       on_open=self.on_ws_connect,
@@ -199,6 +201,7 @@ class Client:
       time.sleep(0.01)
   
   def disconnect_ws(self):
+    logger.info(f"disconnect_ws {self.ws} ")
     if self.ws:
       self.ws.close()
     self.ws_connected = False
@@ -256,6 +259,7 @@ class Client:
     logger.info(f"Sending message to {chatbot}: {message}")
     #reconnect websocket
     if not self.ws_connected:
+      logger.info(f"{chatbot} not ws_connected")
       self.disconnect_ws()
       self.connect_ws()
     message_data = self.send_query("SendMessageMutation", {
